@@ -1,37 +1,27 @@
 <?php 
 
-//Validation for File type. (done) ,date(Done) ,
-
-// if(isset($_POST["Import"])){
-//     $allowed = array('csv', 'ms-excel');
-//     $filename = $_FILES["file"]["type"];
-//     $ext = pathinfo($filename, PATHINFO_EXTENSION);
-//     if (!in_array($ext, $allowed)) {
-//        session_start();
-//        $_SESSION['error'] = "Please upload a .csv file";
-//        header("Location: index.php");
-//      }else{
-//       //Validation for Date
-//         if(isset($_POST["Import"])){
-//           if($_POST["from_date"] < $_POST["to_date"]){
-//             echo "Passed";
-//           }else{
-//             session_start();
-//              $_SESSION['error'] = "From Date must be greater tha To Date";
-//              header("Location: index.php");
-//           }
-//           // echo $_POST["share_name"];
-//         }
-//     }
-//   }
-
-  
-
-
-//Getting csv file data
+// Validation for File type. (done) ,date(Done) ,
 
 if(isset($_POST["Import"])){
-  session_start();
+    $allowed = array('csv', 'ms-excel');
+    $filename = $_FILES["file"]["type"];
+    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+    if (!in_array($ext, $allowed)) {
+       session_start();
+       $_SESSION['error'] = "Please upload a .csv file";
+       header("Location: index.php");
+     }else{
+      //Validation for Date
+        if(isset($_POST["Import"])){
+          if($_POST["from_date"] < $_POST["to_date"]){
+            echo "Passed";
+          }else{
+            session_start();
+             $_SESSION['error'] = "From Date must be greater tha To Date";
+             header("Location: index.php");
+          }
+          // echo $_POST["share_name"];
+          session_start();
   $filename = $_FILES["file"]["tmp_name"];
   if($_FILES["file"]["size"] > 0){
     $file = fopen($filename, "r");
@@ -96,6 +86,17 @@ if(isset($_POST["Import"])){
         header("Location: index.php");
      }
   }
-}
+        }
+    }
+  }
+
+  
+
+
+//Getting csv file data
+
+// if(isset($_POST["Import"])){
+  
+// }
 
 ?>
